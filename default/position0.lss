@@ -1,0 +1,841 @@
+
+position0.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000032  00800100  00000422  000004b6  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000422  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000181  00800132  00800132  000004e8  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000004e8  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000518  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000028  00000000  00000000  00000558  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000009ee  00000000  00000000  00000580  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000721  00000000  00000000  00000f6e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000324  00000000  00000000  0000168f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000d8  00000000  00000000  000019b4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000003af  00000000  00000000  00001a8c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000003f5  00000000  00000000  00001e3b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000018  00000000  00000000  00002230  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e2 e2       	ldi	r30, 0x22	; 34
+  7c:	f4 e0       	ldi	r31, 0x04	; 4
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a2 33       	cpi	r26, 0x32	; 50
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	22 e0       	ldi	r18, 0x02	; 2
+  8c:	a2 e3       	ldi	r26, 0x32	; 50
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a3 3b       	cpi	r26, 0xB3	; 179
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 2e 01 	call	0x25c	; 0x25c <main>
+  9e:	0c 94 0f 02 	jmp	0x41e	; 0x41e <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <charge>:
+    l--;
+  }
+}
+
+// Charge
+static inline void charge(unsigned short* mesure,unsigned char key){
+  a6:	cf 93       	push	r28
+  a8:	df 93       	push	r29
+
+  unsigned short time;
+
+  mesure[key] = 0;
+  aa:	70 e0       	ldi	r23, 0x00	; 0
+  ac:	9b 01       	movw	r18, r22
+  ae:	22 0f       	add	r18, r18
+  b0:	33 1f       	adc	r19, r19
+  b2:	fc 01       	movw	r30, r24
+  b4:	e2 0f       	add	r30, r18
+  b6:	f3 1f       	adc	r31, r19
+  b8:	11 82       	std	Z+1, r1	; 0x01
+  ba:	10 82       	st	Z, r1
+  CHARGE_PORT &= ~( 1UL << CHARGE_PIN );
+  bc:	28 98       	cbi	0x05, 0	; 5
+
+  for(time=0; time<CENSORING_VAL ; ++time){
+    if(!bit_is_clear(*pin_array[key], key_array[key])){
+  be:	d9 01       	movw	r26, r18
+  c0:	ae 5e       	subi	r26, 0xEE	; 238
+  c2:	be 4f       	sbci	r27, 0xFE	; 254
+  c4:	0d 90       	ld	r0, X+
+  c6:	bc 91       	ld	r27, X
+  c8:	a0 2d       	mov	r26, r0
+  ca:	eb 01       	movw	r28, r22
+  cc:	ce 5f       	subi	r28, 0xFE	; 254
+  ce:	de 4f       	sbci	r29, 0xFE	; 254
+  d0:	81 e0       	ldi	r24, 0x01	; 1
+  d2:	90 e0       	ldi	r25, 0x00	; 0
+  d4:	bc 01       	movw	r22, r24
+  d6:	08 80       	ld	r0, Y
+  d8:	02 c0       	rjmp	.+4      	; 0xde <charge+0x38>
+  da:	66 0f       	add	r22, r22
+  dc:	77 1f       	adc	r23, r23
+  de:	0a 94       	dec	r0
+  e0:	e2 f7       	brpl	.-8      	; 0xda <charge+0x34>
+  unsigned short time;
+
+  mesure[key] = 0;
+  CHARGE_PORT &= ~( 1UL << CHARGE_PIN );
+
+  for(time=0; time<CENSORING_VAL ; ++time){
+  e2:	40 e0       	ldi	r20, 0x00	; 0
+  e4:	50 e0       	ldi	r21, 0x00	; 0
+    if(!bit_is_clear(*pin_array[key], key_array[key])){
+  e6:	2c 91       	ld	r18, X
+  e8:	30 e0       	ldi	r19, 0x00	; 0
+  ea:	26 23       	and	r18, r22
+  ec:	37 23       	and	r19, r23
+  ee:	23 2b       	or	r18, r19
+  f0:	19 f0       	breq	.+6      	; 0xf8 <charge+0x52>
+  	   mesure[key]=time;
+  f2:	51 83       	std	Z+1, r21	; 0x01
+  f4:	40 83       	st	Z, r20
+       return;
+  f6:	06 c0       	rjmp	.+12     	; 0x104 <charge+0x5e>
+  unsigned short time;
+
+  mesure[key] = 0;
+  CHARGE_PORT &= ~( 1UL << CHARGE_PIN );
+
+  for(time=0; time<CENSORING_VAL ; ++time){
+  f8:	4f 5f       	subi	r20, 0xFF	; 255
+  fa:	5f 4f       	sbci	r21, 0xFF	; 255
+  fc:	41 15       	cp	r20, r1
+  fe:	80 e1       	ldi	r24, 0x10	; 16
+ 100:	58 07       	cpc	r21, r24
+ 102:	89 f7       	brne	.-30     	; 0xe6 <charge+0x40>
+    if(!bit_is_clear(*pin_array[key], key_array[key])){
+  	   mesure[key]=time;
+       return;
+  	}
+  }
+}
+ 104:	df 91       	pop	r29
+ 106:	cf 91       	pop	r28
+ 108:	08 95       	ret
+
+0000010a <sleep>:
+unsigned int   calibrate[KEY_NUM] = {0};
+unsigned char  invalid[KEY_NUM] = {0};
+unsigned char  map[KEY_NUM] = {0};
+unsigned short average[KEY_NUM][AVERAGE_NUM] = {{0}};
+
+void sleep(unsigned int loop){
+ 10a:	cf 93       	push	r28
+ 10c:	df 93       	push	r29
+ 10e:	00 d0       	rcall	.+0      	; 0x110 <sleep+0x6>
+ 110:	cd b7       	in	r28, 0x3d	; 61
+ 112:	de b7       	in	r29, 0x3e	; 62
+  volatile unsigned int l = loop;
+  while(l>0){
+    l--;
+ 114:	9a 83       	std	Y+2, r25	; 0x02
+ 116:	89 83       	std	Y+1, r24	; 0x01
+unsigned char  map[KEY_NUM] = {0};
+unsigned short average[KEY_NUM][AVERAGE_NUM] = {{0}};
+
+void sleep(unsigned int loop){
+  volatile unsigned int l = loop;
+  while(l>0){
+ 118:	89 81       	ldd	r24, Y+1	; 0x01
+ 11a:	9a 81       	ldd	r25, Y+2	; 0x02
+ 11c:	89 2b       	or	r24, r25
+ 11e:	21 f0       	breq	.+8      	; 0x128 <sleep+0x1e>
+    l--;
+ 120:	89 81       	ldd	r24, Y+1	; 0x01
+ 122:	9a 81       	ldd	r25, Y+2	; 0x02
+ 124:	01 97       	sbiw	r24, 0x01	; 1
+ 126:	f6 cf       	rjmp	.-20     	; 0x114 <sleep+0xa>
+  }
+}
+ 128:	0f 90       	pop	r0
+ 12a:	0f 90       	pop	r0
+ 12c:	df 91       	pop	r29
+ 12e:	cf 91       	pop	r28
+ 130:	08 95       	ret
+
+00000132 <discharge>:
+  }
+}
+
+// Discharge
+void discharge(){
+  CHARGE_PORT |= ( 1UL << CHARGE_PIN );
+ 132:	28 9a       	sbi	0x05, 0	; 5
+  sleep(50);
+ 134:	82 e3       	ldi	r24, 0x32	; 50
+ 136:	90 e0       	ldi	r25, 0x00	; 0
+ 138:	0c 94 85 00 	jmp	0x10a	; 0x10a <sleep>
+
+0000013c <calibrate_val>:
+}
+
+void calibrate_val(unsigned short* mesure){
+ 13c:	6f 92       	push	r6
+ 13e:	7f 92       	push	r7
+ 140:	8f 92       	push	r8
+ 142:	9f 92       	push	r9
+ 144:	af 92       	push	r10
+ 146:	bf 92       	push	r11
+ 148:	cf 92       	push	r12
+ 14a:	df 92       	push	r13
+ 14c:	ef 92       	push	r14
+ 14e:	ff 92       	push	r15
+ 150:	0f 93       	push	r16
+ 152:	1f 93       	push	r17
+ 154:	cf 93       	push	r28
+ 156:	df 93       	push	r29
+ 158:	3c 01       	movw	r6, r24
+	unsigned char  outlier = 1;
+	unsigned char  key;
+	unsigned char  num;
+    unsigned int   val;
+
+	discharge();
+ 15a:	0e 94 99 00 	call	0x132	; 0x132 <discharge>
+	sleep(5000);
+ 15e:	88 e8       	ldi	r24, 0x88	; 136
+ 160:	93 e1       	ldi	r25, 0x13	; 19
+ 162:	0e 94 85 00 	call	0x10a	; 0x10a <sleep>
+ 166:	e2 e9       	ldi	r30, 0x92	; 146
+ 168:	f2 e0       	ldi	r31, 0x02	; 2
+	for(key=0;key<KEY_NUM;key++){
+      calibrate[key]=0;
+ 16a:	11 92       	st	Z+, r1
+ 16c:	11 92       	st	Z+, r1
+	unsigned char  num;
+    unsigned int   val;
+
+	discharge();
+	sleep(5000);
+	for(key=0;key<KEY_NUM;key++){
+ 16e:	82 e0       	ldi	r24, 0x02	; 2
+ 170:	e2 3b       	cpi	r30, 0xB2	; 178
+ 172:	f8 07       	cpc	r31, r24
+ 174:	d1 f7       	brne	.-12     	; 0x16a <calibrate_val+0x2e>
+          val += average[key][num];
+        }
+//	    val /= AVERAGE_NUM;
+		calibrate[key] = (unsigned short)val;
+        for(num=0;num<AVERAGE_NUM;num++){
+          if((average[key][num]>=((calibrate[key]/AVERAGE_NUM)+THRESHOLD_VAL)) || 
+ 176:	9a e0       	ldi	r25, 0x0A	; 10
+ 178:	89 2e       	mov	r8, r25
+ 17a:	91 2c       	mov	r9, r1
+ 17c:	02 e3       	ldi	r16, 0x32	; 50
+ 17e:	11 e0       	ldi	r17, 0x01	; 1
+ 180:	c6 2d       	mov	r28, r6
+ 182:	d7 2d       	mov	r29, r7
+		     ((average[key][num]+THRESHOLD_VAL)<=(calibrate[key]/AVERAGE_NUM))){
+            outlier=1;
+ 184:	82 e9       	ldi	r24, 0x92	; 146
+ 186:	a8 2e       	mov	r10, r24
+ 188:	82 e0       	ldi	r24, 0x02	; 2
+ 18a:	b8 2e       	mov	r11, r24
+ 18c:	f1 2c       	mov	r15, r1
+ 18e:	e1 2c       	mov	r14, r1
+	unsigned char  key;
+	unsigned char  num;
+    unsigned int   val;
+
+	discharge();
+	sleep(5000);
+ 190:	c1 2c       	mov	r12, r1
+ 192:	d1 2c       	mov	r13, r1
+	{
+      outlier=0;
+	  // calibrate
+	  for(key=0;key<KEY_NUM;key++){
+	    for(num=0;num<AVERAGE_NUM;num++){
+	      charge(mesure,key);
+ 194:	6f 2d       	mov	r22, r15
+ 196:	c3 01       	movw	r24, r6
+ 198:	0e 94 53 00 	call	0xa6	; 0xa6 <charge>
+		  discharge();
+ 19c:	0e 94 99 00 	call	0x132	; 0x132 <discharge>
+		  sleep(500);
+ 1a0:	84 ef       	ldi	r24, 0xF4	; 244
+ 1a2:	91 e0       	ldi	r25, 0x01	; 1
+ 1a4:	0e 94 85 00 	call	0x10a	; 0x10a <sleep>
+	      average[key][num] = mesure[key];
+ 1a8:	88 81       	ld	r24, Y
+ 1aa:	99 81       	ldd	r25, Y+1	; 0x01
+ 1ac:	f8 01       	movw	r30, r16
+ 1ae:	ec 0d       	add	r30, r12
+ 1b0:	fd 1d       	adc	r31, r13
+ 1b2:	91 83       	std	Z+1, r25	; 0x01
+ 1b4:	80 83       	st	Z, r24
+ 1b6:	e2 e0       	ldi	r30, 0x02	; 2
+ 1b8:	ce 0e       	add	r12, r30
+ 1ba:	d1 1c       	adc	r13, r1
+	while(outlier)
+	{
+      outlier=0;
+	  // calibrate
+	  for(key=0;key<KEY_NUM;key++){
+	    for(num=0;num<AVERAGE_NUM;num++){
+ 1bc:	f4 e1       	ldi	r31, 0x14	; 20
+ 1be:	cf 16       	cp	r12, r31
+ 1c0:	d1 04       	cpc	r13, r1
+ 1c2:	41 f7       	brne	.-48     	; 0x194 <calibrate_val+0x58>
+ 1c4:	20 e0       	ldi	r18, 0x00	; 0
+ 1c6:	30 e0       	ldi	r19, 0x00	; 0
+ 1c8:	80 e0       	ldi	r24, 0x00	; 0
+ 1ca:	90 e0       	ldi	r25, 0x00	; 0
+		  sleep(500);
+	      average[key][num] = mesure[key];
+        }
+	    val = 0;
+	    for(num=0;num<AVERAGE_NUM;num++){
+          val += average[key][num];
+ 1cc:	f8 01       	movw	r30, r16
+ 1ce:	e2 0f       	add	r30, r18
+ 1d0:	f3 1f       	adc	r31, r19
+ 1d2:	40 81       	ld	r20, Z
+ 1d4:	51 81       	ldd	r21, Z+1	; 0x01
+ 1d6:	84 0f       	add	r24, r20
+ 1d8:	95 1f       	adc	r25, r21
+ 1da:	2e 5f       	subi	r18, 0xFE	; 254
+ 1dc:	3f 4f       	sbci	r19, 0xFF	; 255
+		  discharge();
+		  sleep(500);
+	      average[key][num] = mesure[key];
+        }
+	    val = 0;
+	    for(num=0;num<AVERAGE_NUM;num++){
+ 1de:	24 31       	cpi	r18, 0x14	; 20
+ 1e0:	31 05       	cpc	r19, r1
+ 1e2:	a1 f7       	brne	.-24     	; 0x1cc <calibrate_val+0x90>
+          val += average[key][num];
+        }
+//	    val /= AVERAGE_NUM;
+		calibrate[key] = (unsigned short)val;
+ 1e4:	f5 01       	movw	r30, r10
+ 1e6:	81 93       	st	Z+, r24
+ 1e8:	91 93       	st	Z+, r25
+ 1ea:	5f 01       	movw	r10, r30
+        for(num=0;num<AVERAGE_NUM;num++){
+          if((average[key][num]>=((calibrate[key]/AVERAGE_NUM)+THRESHOLD_VAL)) || 
+ 1ec:	b4 01       	movw	r22, r8
+ 1ee:	0e 94 fb 01 	call	0x3f6	; 0x3f6 <__udivmodhi4>
+ 1f2:	ab 01       	movw	r20, r22
+ 1f4:	46 5f       	subi	r20, 0xF6	; 246
+ 1f6:	5f 4f       	sbci	r21, 0xFF	; 255
+ 1f8:	80 e0       	ldi	r24, 0x00	; 0
+ 1fa:	90 e0       	ldi	r25, 0x00	; 0
+ 1fc:	f8 01       	movw	r30, r16
+ 1fe:	e8 0f       	add	r30, r24
+ 200:	f9 1f       	adc	r31, r25
+ 202:	20 81       	ld	r18, Z
+ 204:	31 81       	ldd	r19, Z+1	; 0x01
+ 206:	24 17       	cp	r18, r20
+ 208:	35 07       	cpc	r19, r21
+ 20a:	28 f4       	brcc	.+10     	; 0x216 <calibrate_val+0xda>
+ 20c:	26 5f       	subi	r18, 0xF6	; 246
+ 20e:	3f 4f       	sbci	r19, 0xFF	; 255
+ 210:	62 17       	cp	r22, r18
+ 212:	73 07       	cpc	r23, r19
+ 214:	10 f0       	brcs	.+4      	; 0x21a <calibrate_val+0xde>
+		     ((average[key][num]+THRESHOLD_VAL)<=(calibrate[key]/AVERAGE_NUM))){
+            outlier=1;
+ 216:	ee 24       	eor	r14, r14
+ 218:	e3 94       	inc	r14
+ 21a:	02 96       	adiw	r24, 0x02	; 2
+	    for(num=0;num<AVERAGE_NUM;num++){
+          val += average[key][num];
+        }
+//	    val /= AVERAGE_NUM;
+		calibrate[key] = (unsigned short)val;
+        for(num=0;num<AVERAGE_NUM;num++){
+ 21c:	84 31       	cpi	r24, 0x14	; 20
+ 21e:	91 05       	cpc	r25, r1
+ 220:	69 f7       	brne	.-38     	; 0x1fc <calibrate_val+0xc0>
+
+	while(outlier)
+	{
+      outlier=0;
+	  // calibrate
+	  for(key=0;key<KEY_NUM;key++){
+ 222:	f3 94       	inc	r15
+ 224:	0c 5e       	subi	r16, 0xEC	; 236
+ 226:	1f 4f       	sbci	r17, 0xFF	; 255
+ 228:	22 96       	adiw	r28, 0x02	; 2
+ 22a:	f0 e1       	ldi	r31, 0x10	; 16
+ 22c:	ff 12       	cpse	r15, r31
+ 22e:	b0 cf       	rjmp	.-160    	; 0x190 <calibrate_val+0x54>
+	sleep(5000);
+	for(key=0;key<KEY_NUM;key++){
+      calibrate[key]=0;
+    }
+
+	while(outlier)
+ 230:	e1 10       	cpse	r14, r1
+ 232:	a4 cf       	rjmp	.-184    	; 0x17c <calibrate_val+0x40>
+            outlier=1;
+		  }
+        }
+      }
+	}
+    discharge();
+ 234:	0e 94 99 00 	call	0x132	; 0x132 <discharge>
+	sleep(500);
+ 238:	84 ef       	ldi	r24, 0xF4	; 244
+ 23a:	91 e0       	ldi	r25, 0x01	; 1
+}
+ 23c:	df 91       	pop	r29
+ 23e:	cf 91       	pop	r28
+ 240:	1f 91       	pop	r17
+ 242:	0f 91       	pop	r16
+ 244:	ff 90       	pop	r15
+ 246:	ef 90       	pop	r14
+ 248:	df 90       	pop	r13
+ 24a:	cf 90       	pop	r12
+ 24c:	bf 90       	pop	r11
+ 24e:	af 90       	pop	r10
+ 250:	9f 90       	pop	r9
+ 252:	8f 90       	pop	r8
+ 254:	7f 90       	pop	r7
+ 256:	6f 90       	pop	r6
+		  }
+        }
+      }
+	}
+    discharge();
+	sleep(500);
+ 258:	0c 94 85 00 	jmp	0x10a	; 0x10a <sleep>
+
+0000025c <main>:
+}
+
+
+int main(){
+ 25c:	cf 93       	push	r28
+ 25e:	df 93       	push	r29
+ 260:	cd b7       	in	r28, 0x3d	; 61
+ 262:	de b7       	in	r29, 0x3e	; 62
+ 264:	a2 97       	sbiw	r28, 0x22	; 34
+ 266:	0f b6       	in	r0, 0x3f	; 63
+ 268:	f8 94       	cli
+ 26a:	de bf       	out	0x3e, r29	; 62
+ 26c:	0f be       	out	0x3f, r0	; 63
+ 26e:	cd bf       	out	0x3d, r28	; 61
+	unsigned int   val;
+	unsigned char  index = 0;
+	unsigned char  outlier = 1;
+	unsigned char  key_select=0;
+
+	cli();
+ 270:	f8 94       	cli
+	DDRB =0b00000001;
+ 272:	81 e0       	ldi	r24, 0x01	; 1
+ 274:	84 b9       	out	0x04, r24	; 4
+	PORTB=0b11111111;
+ 276:	8f ef       	ldi	r24, 0xFF	; 255
+ 278:	85 b9       	out	0x05, r24	; 5
+    DDRC =0b11000001;
+ 27a:	91 ec       	ldi	r25, 0xC1	; 193
+ 27c:	97 b9       	out	0x07, r25	; 7
+	PORTC=0b11111111;
+ 27e:	88 b9       	out	0x08, r24	; 8
+	DDRD =0b00000000;
+ 280:	1a b8       	out	0x0a, r1	; 10
+	PORTD=0b11111111;
+ 282:	8b b9       	out	0x0b, r24	; 11
+	sei();
+ 284:	78 94       	sei
+
+    cli();
+ 286:	f8 94       	cli
+
+    calibrate_val(mesure);
+ 288:	ce 01       	movw	r24, r28
+ 28a:	01 96       	adiw	r24, 0x01	; 1
+ 28c:	0e 94 9e 00 	call	0x13c	; 0x13c <calibrate_val>
+ 290:	82 eb       	ldi	r24, 0xB2	; 178
+ 292:	92 e0       	ldi	r25, 0x02	; 2
+ 294:	a2 e8       	ldi	r26, 0x82	; 130
+ 296:	b2 e0       	ldi	r27, 0x02	; 2
+ 298:	e2 e9       	ldi	r30, 0x92	; 146
+ 29a:	f2 e0       	ldi	r31, 0x02	; 2
+
+    for(key=0;key<KEY_NUM;key++){
+	  if(calibrate[key]==0){
+	    invalid[key]=1;
+ 29c:	21 e0       	ldi	r18, 0x01	; 1
+    cli();
+
+    calibrate_val(mesure);
+
+    for(key=0;key<KEY_NUM;key++){
+	  if(calibrate[key]==0){
+ 29e:	41 91       	ld	r20, Z+
+ 2a0:	51 91       	ld	r21, Z+
+ 2a2:	45 2b       	or	r20, r21
+ 2a4:	09 f4       	brne	.+2      	; 0x2a8 <main+0x4c>
+	    invalid[key]=1;
+ 2a6:	2c 93       	st	X, r18
+ 2a8:	11 96       	adiw	r26, 0x01	; 1
+
+    cli();
+
+    calibrate_val(mesure);
+
+    for(key=0;key<KEY_NUM;key++){
+ 2aa:	8e 17       	cp	r24, r30
+ 2ac:	9f 07       	cpc	r25, r31
+ 2ae:	b9 f7       	brne	.-18     	; 0x29e <main+0x42>
+		  }
+
+          charge(mesure,key);
+		  discharge();
+
+          if(mesure[key]<calibrate[key]/AVERAGE_NUM){
+ 2b0:	3a e0       	ldi	r19, 0x0A	; 10
+ 2b2:	43 2e       	mov	r4, r19
+ 2b4:	51 2c       	mov	r5, r1
+	      {
+	        *out_pin_array[0] = (*out_pin_array[0])|(( 1 << out_key_array[0]));
+          }
+	      else
+	      {
+	        *out_pin_array[0] = (*out_pin_array[0])&(~( 1 << out_key_array[0]));
+ 2b6:	66 24       	eor	r6, r6
+ 2b8:	63 94       	inc	r6
+ 2ba:	71 2c       	mov	r7, r1
+
+          key_select=0;
+          key_select |= (1-bit_is_clear(PINC, PINC1));
+          key_select |= (1-bit_is_clear(PINC, PINC2)) << 1;
+	      key_select |= (1-bit_is_clear(PINC, PINC3)) << 2;
+	      key_select |= (1-bit_is_clear(PINC, PINC4)) << 3;
+ 2bc:	c1 2c       	mov	r12, r1
+ 2be:	d1 2c       	mov	r13, r1
+ 2c0:	82 e7       	ldi	r24, 0x72	; 114
+ 2c2:	88 2e       	mov	r8, r24
+ 2c4:	82 e0       	ldi	r24, 0x02	; 2
+ 2c6:	98 2e       	mov	r9, r24
+ 2c8:	92 e3       	ldi	r25, 0x32	; 50
+ 2ca:	e9 2e       	mov	r14, r25
+ 2cc:	91 e0       	ldi	r25, 0x01	; 1
+ 2ce:	f9 2e       	mov	r15, r25
+ 2d0:	8e 01       	movw	r16, r28
+ 2d2:	0f 5f       	subi	r16, 0xFF	; 255
+ 2d4:	1f 4f       	sbci	r17, 0xFF	; 255
+	PORTD=0b11111111;
+	sei();
+
+    cli();
+
+    calibrate_val(mesure);
+ 2d6:	22 e9       	ldi	r18, 0x92	; 146
+ 2d8:	a2 2e       	mov	r10, r18
+ 2da:	22 e0       	ldi	r18, 0x02	; 2
+ 2dc:	b2 2e       	mov	r11, r18
+ 2de:	82 e8       	ldi	r24, 0x82	; 130
+ 2e0:	92 e0       	ldi	r25, 0x02	; 2
+ 2e2:	9a a3       	std	Y+34, r25	; 0x22
+ 2e4:	89 a3       	std	Y+33, r24	; 0x21
+ 2e6:	31 2c       	mov	r3, r1
+
+    // main loop
+	while(1){
+	  for(index=0;index<AVERAGE_NUM;++index){
+	    for(key=0;key<KEY_NUM;++key){
+          if(invalid[key]){
+ 2e8:	e9 a1       	ldd	r30, Y+33	; 0x21
+ 2ea:	fa a1       	ldd	r31, Y+34	; 0x22
+ 2ec:	81 91       	ld	r24, Z+
+ 2ee:	fa a3       	std	Y+34, r31	; 0x22
+ 2f0:	e9 a3       	std	Y+33, r30	; 0x21
+ 2f2:	81 11       	cpse	r24, r1
+ 2f4:	68 c0       	rjmp	.+208    	; 0x3c6 <main+0x16a>
+		    continue;
+		  }
+
+          charge(mesure,key);
+ 2f6:	63 2d       	mov	r22, r3
+ 2f8:	ce 01       	movw	r24, r28
+ 2fa:	01 96       	adiw	r24, 0x01	; 1
+ 2fc:	0e 94 53 00 	call	0xa6	; 0xa6 <charge>
+		  discharge();
+ 300:	0e 94 99 00 	call	0x132	; 0x132 <discharge>
+
+          if(mesure[key]<calibrate[key]/AVERAGE_NUM){
+ 304:	f5 01       	movw	r30, r10
+ 306:	20 81       	ld	r18, Z
+ 308:	31 81       	ldd	r19, Z+1	; 0x01
+ 30a:	c9 01       	movw	r24, r18
+ 30c:	b2 01       	movw	r22, r4
+ 30e:	0e 94 fb 01 	call	0x3f6	; 0x3f6 <__udivmodhi4>
+ 312:	f8 01       	movw	r30, r16
+ 314:	80 81       	ld	r24, Z
+ 316:	91 81       	ldd	r25, Z+1	; 0x01
+ 318:	86 17       	cp	r24, r22
+ 31a:	97 07       	cpc	r25, r23
+ 31c:	10 f4       	brcc	.+4      	; 0x322 <main+0xc6>
+            mesure[key]=calibrate[key]/AVERAGE_NUM;
+ 31e:	71 83       	std	Z+1, r23	; 0x01
+ 320:	60 83       	st	Z, r22
+		  }
+          average[key][index] = mesure[key];
+ 322:	f8 01       	movw	r30, r16
+ 324:	80 81       	ld	r24, Z
+ 326:	91 81       	ldd	r25, Z+1	; 0x01
+ 328:	f7 01       	movw	r30, r14
+ 32a:	ec 0d       	add	r30, r12
+ 32c:	fd 1d       	adc	r31, r13
+ 32e:	91 83       	std	Z+1, r25	; 0x01
+ 330:	80 83       	st	Z, r24
+ 332:	80 e0       	ldi	r24, 0x00	; 0
+ 334:	90 e0       	ldi	r25, 0x00	; 0
+	      val = 0;
+ 336:	40 e0       	ldi	r20, 0x00	; 0
+ 338:	50 e0       	ldi	r21, 0x00	; 0
+	      for(num=0;num<AVERAGE_NUM;num++){
+            val += average[key][num];
+ 33a:	f7 01       	movw	r30, r14
+ 33c:	e8 0f       	add	r30, r24
+ 33e:	f9 1f       	adc	r31, r25
+ 340:	60 81       	ld	r22, Z
+ 342:	71 81       	ldd	r23, Z+1	; 0x01
+ 344:	46 0f       	add	r20, r22
+ 346:	57 1f       	adc	r21, r23
+ 348:	02 96       	adiw	r24, 0x02	; 2
+          if(mesure[key]<calibrate[key]/AVERAGE_NUM){
+            mesure[key]=calibrate[key]/AVERAGE_NUM;
+		  }
+          average[key][index] = mesure[key];
+	      val = 0;
+	      for(num=0;num<AVERAGE_NUM;num++){
+ 34a:	84 31       	cpi	r24, 0x14	; 20
+ 34c:	91 05       	cpc	r25, r1
+ 34e:	a9 f7       	brne	.-22     	; 0x33a <main+0xde>
+            val += average[key][num];
+          }
+//	      val /= AVERAGE_NUM;
+		  map[key] = (val >= (calibrate[key]+THRESHOLD_VAL2)) ? 1 : 0; 
+ 350:	20 5b       	subi	r18, 0xB0	; 176
+ 352:	3f 4f       	sbci	r19, 0xFF	; 255
+ 354:	81 e0       	ldi	r24, 0x01	; 1
+ 356:	42 17       	cp	r20, r18
+ 358:	53 07       	cpc	r21, r19
+ 35a:	08 f4       	brcc	.+2      	; 0x35e <main+0x102>
+ 35c:	80 e0       	ldi	r24, 0x00	; 0
+ 35e:	f4 01       	movw	r30, r8
+ 360:	80 83       	st	Z, r24
+
+          key_select=0;
+          key_select |= (1-bit_is_clear(PINC, PINC1));
+ 362:	e6 b1       	in	r30, 0x06	; 6
+ 364:	e6 95       	lsr	r30
+ 366:	e1 70       	andi	r30, 0x01	; 1
+          key_select |= (1-bit_is_clear(PINC, PINC2)) << 1;
+ 368:	32 99       	sbic	0x06, 2	; 6
+ 36a:	02 c0       	rjmp	.+4      	; 0x370 <main+0x114>
+ 36c:	20 e0       	ldi	r18, 0x00	; 0
+ 36e:	01 c0       	rjmp	.+2      	; 0x372 <main+0x116>
+ 370:	22 e0       	ldi	r18, 0x02	; 2
+ 372:	e2 2b       	or	r30, r18
+	      key_select |= (1-bit_is_clear(PINC, PINC3)) << 2;
+ 374:	33 99       	sbic	0x06, 3	; 6
+ 376:	02 c0       	rjmp	.+4      	; 0x37c <main+0x120>
+ 378:	90 e0       	ldi	r25, 0x00	; 0
+ 37a:	01 c0       	rjmp	.+2      	; 0x37e <main+0x122>
+ 37c:	94 e0       	ldi	r25, 0x04	; 4
+ 37e:	e9 2b       	or	r30, r25
+	      key_select |= (1-bit_is_clear(PINC, PINC4)) << 3;
+ 380:	34 99       	sbic	0x06, 4	; 6
+ 382:	02 c0       	rjmp	.+4      	; 0x388 <main+0x12c>
+ 384:	80 e0       	ldi	r24, 0x00	; 0
+ 386:	01 c0       	rjmp	.+2      	; 0x38a <main+0x12e>
+ 388:	88 e0       	ldi	r24, 0x08	; 8
+          key_select = key_select % KEY_NUM;
+
+
+          //key_select = (key_select+1) % KEY_NUM;
+
+          if(map[key_select])
+ 38a:	e8 2b       	or	r30, r24
+ 38c:	0e 2e       	mov	r0, r30
+ 38e:	00 0c       	add	r0, r0
+ 390:	ff 0b       	sbc	r31, r31
+ 392:	ee 58       	subi	r30, 0x8E	; 142
+ 394:	fd 4f       	sbci	r31, 0xFD	; 253
+ 396:	90 81       	ld	r25, Z
+ 398:	e0 91 00 01 	lds	r30, 0x0100	; 0x800100 <__data_start>
+ 39c:	f0 91 01 01 	lds	r31, 0x0101	; 0x800101 <__data_start+0x1>
+ 3a0:	80 91 b2 02 	lds	r24, 0x02B2	; 0x8002b2 <out_key_array>
+          //if(((float)calibrate[key_select])*THRESHOLD_VAL1 < (float)val)
+	      {
+	        *out_pin_array[0] = (*out_pin_array[0])|(( 1 << out_key_array[0]));
+ 3a4:	93 01       	movw	r18, r6
+ 3a6:	02 c0       	rjmp	.+4      	; 0x3ac <main+0x150>
+ 3a8:	22 0f       	add	r18, r18
+ 3aa:	33 1f       	adc	r19, r19
+ 3ac:	8a 95       	dec	r24
+ 3ae:	e2 f7       	brpl	.-8      	; 0x3a8 <main+0x14c>
+          key_select = key_select % KEY_NUM;
+
+
+          //key_select = (key_select+1) % KEY_NUM;
+
+          if(map[key_select])
+ 3b0:	99 23       	and	r25, r25
+ 3b2:	21 f0       	breq	.+8      	; 0x3bc <main+0x160>
+          //if(((float)calibrate[key_select])*THRESHOLD_VAL1 < (float)val)
+	      {
+	        *out_pin_array[0] = (*out_pin_array[0])|(( 1 << out_key_array[0]));
+ 3b4:	c9 01       	movw	r24, r18
+ 3b6:	90 81       	ld	r25, Z
+ 3b8:	89 2b       	or	r24, r25
+ 3ba:	04 c0       	rjmp	.+8      	; 0x3c4 <main+0x168>
+          }
+	      else
+	      {
+	        *out_pin_array[0] = (*out_pin_array[0])&(~( 1 << out_key_array[0]));
+ 3bc:	c9 01       	movw	r24, r18
+ 3be:	80 95       	com	r24
+ 3c0:	90 81       	ld	r25, Z
+ 3c2:	89 23       	and	r24, r25
+ 3c4:	80 83       	st	Z, r24
+    }
+
+    // main loop
+	while(1){
+	  for(index=0;index<AVERAGE_NUM;++index){
+	    for(key=0;key<KEY_NUM;++key){
+ 3c6:	33 94       	inc	r3
+ 3c8:	3f ef       	ldi	r19, 0xFF	; 255
+ 3ca:	83 1a       	sub	r8, r19
+ 3cc:	93 0a       	sbc	r9, r19
+ 3ce:	84 e1       	ldi	r24, 0x14	; 20
+ 3d0:	e8 0e       	add	r14, r24
+ 3d2:	f1 1c       	adc	r15, r1
+ 3d4:	0e 5f       	subi	r16, 0xFE	; 254
+ 3d6:	1f 4f       	sbci	r17, 0xFF	; 255
+ 3d8:	92 e0       	ldi	r25, 0x02	; 2
+ 3da:	a9 0e       	add	r10, r25
+ 3dc:	b1 1c       	adc	r11, r1
+ 3de:	e0 e1       	ldi	r30, 0x10	; 16
+ 3e0:	3e 12       	cpse	r3, r30
+ 3e2:	82 cf       	rjmp	.-252    	; 0x2e8 <main+0x8c>
+ 3e4:	f2 e0       	ldi	r31, 0x02	; 2
+ 3e6:	cf 0e       	add	r12, r31
+ 3e8:	d1 1c       	adc	r13, r1
+	  }
+    }
+
+    // main loop
+	while(1){
+	  for(index=0;index<AVERAGE_NUM;++index){
+ 3ea:	24 e1       	ldi	r18, 0x14	; 20
+ 3ec:	c2 16       	cp	r12, r18
+ 3ee:	d1 04       	cpc	r13, r1
+ 3f0:	09 f0       	breq	.+2      	; 0x3f4 <main+0x198>
+ 3f2:	66 cf       	rjmp	.-308    	; 0x2c0 <main+0x64>
+ 3f4:	63 cf       	rjmp	.-314    	; 0x2bc <main+0x60>
+
+000003f6 <__udivmodhi4>:
+ 3f6:	aa 1b       	sub	r26, r26
+ 3f8:	bb 1b       	sub	r27, r27
+ 3fa:	51 e1       	ldi	r21, 0x11	; 17
+ 3fc:	07 c0       	rjmp	.+14     	; 0x40c <__udivmodhi4_ep>
+
+000003fe <__udivmodhi4_loop>:
+ 3fe:	aa 1f       	adc	r26, r26
+ 400:	bb 1f       	adc	r27, r27
+ 402:	a6 17       	cp	r26, r22
+ 404:	b7 07       	cpc	r27, r23
+ 406:	10 f0       	brcs	.+4      	; 0x40c <__udivmodhi4_ep>
+ 408:	a6 1b       	sub	r26, r22
+ 40a:	b7 0b       	sbc	r27, r23
+
+0000040c <__udivmodhi4_ep>:
+ 40c:	88 1f       	adc	r24, r24
+ 40e:	99 1f       	adc	r25, r25
+ 410:	5a 95       	dec	r21
+ 412:	a9 f7       	brne	.-22     	; 0x3fe <__udivmodhi4_loop>
+ 414:	80 95       	com	r24
+ 416:	90 95       	com	r25
+ 418:	bc 01       	movw	r22, r24
+ 41a:	cd 01       	movw	r24, r26
+ 41c:	08 95       	ret
+
+0000041e <_exit>:
+ 41e:	f8 94       	cli
+
+00000420 <__stop_program>:
+ 420:	ff cf       	rjmp	.-2      	; 0x420 <__stop_program>
